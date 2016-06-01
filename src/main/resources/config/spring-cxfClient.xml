@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://cxf.apache.org/jaxws 
+ http://cxf.apache.org/schemas/jaxws.xsd">
+	<!-- 邮件客户端webservice -->
+	<!-- <jaxws:client id="helloworldlClient" serviceClass="demo.spring.service.HelloWorld"
+		address="http://localhost:8080/ws/helloworld_ws">
+		<jaxws:outInterceptors>
+			<ref bean="wss4jInInterceptor" />
+		</jaxws:outInterceptors>
+	</jaxws:client> -->
+	
+	
+	<jaxws:client id="client" serviceClass="org.acp.support.security.ws.UserWebService"
+		address="http://localhost:9999/ws/user">
+		<jaxws:outInterceptors>
+			<ref bean="wss4jInInterceptor" />
+		</jaxws:outInterceptors>
+	</jaxws:client>
+
+	<!-- 定义安全校验器 -->
+	<!-- <bean id="wss4jInInterceptor" class="org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor">
+		<constructor-arg>
+			<map>
+				<entry key="action" value="UsernameToken" />
+				<entry key="passwordType" value="PasswordText" />
+				<entry key="user" value="luoshengsha" />
+				<entry key="passwordCallbackClass" value="com.gstar.ClientPasswordCallback" />
+			</map>
+		</constructor-arg>
+	</bean> -->
+	<bean id="wss4jInInterceptor" class="org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor">
+		<constructor-arg>
+			<map>
+				<entry key="action" value="UsernameToken" />
+				<entry key="passwordType" value="PasswordText" />
+				<entry key="user" value="gstar" />
+				<entry key="passwordCallbackClass" value="com.gstar.ClientPasswordCallback" />
+			</map>
+		</constructor-arg>
+	</bean>
+</beans>
