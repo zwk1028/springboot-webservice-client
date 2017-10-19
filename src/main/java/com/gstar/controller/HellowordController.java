@@ -1,22 +1,24 @@
 package com.gstar.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.gstar.service.HelloWorld;
 
 @RestController
 public class HellowordController {
-	/*@Autowired
-	private HelloWorld helloworldlClient;
+	
+	@Autowired
+	private ApplicationContext context;
 	
 	@RequestMapping("/hi")
 	public String sayHi() {
 		System.out.println("---------start-----------");
-		return helloworldlClient.sayHi("ljlkj");
-		//System.out.println("---------end-----------");
+		HelloWorld h = context.getBean("iHelloWorld",HelloWorld.class);
+		String s = h.sayHello("helsdkfjkls");
+		return s;
 	}
 	
-	@RequestMapping("/getuser")
-	public String getUser() {
-		User user = helloworldlClient.getUser();
-		return "id: " + user.getId() + "name: " + user.getName() + ", password: " + user.getPassword();
-	}*/
 }
